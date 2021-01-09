@@ -13,14 +13,15 @@
 
 class Solution:
     def deleteDuplicates(self, head: ListNode) -> ListNode:
-        if head is None:
-            return head
-        dummy_head = head
-        while head is not None and head.next is not None:
-            if head.val == head.next.val:
-                head.next = head.next.next
+        current = head
+        while current != None and current.next != None:
+            if current.val == current.next.val:
+                current.next = current.next.next
             else:
-                head = head.next
-        return dummy_head
+                current = current.next
+        return head
 # @lc code=end
+# current val和current next val值相等时, 把current指向跳过后面的节点
+# 这时候不用再对current指针指向current.next 
+# 因为还要比较current和current.next.next的值是否相等
 
