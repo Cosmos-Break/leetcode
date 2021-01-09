@@ -14,17 +14,21 @@
 
 class Solution:
     def isSymmetric(self, root: TreeNode) -> bool:
-        def isSym(root1, root2):
-            if root1 == None and root2 == None:
+        def isSym(left, right):
+            if left is None and right is None:
                 return True
-            elif root1 != None and root2 != None:
-                return root1.val == root2.val and isSym(root1.left, root2.right) and isSym(root1.right, root2.left)
+            elif left is not None and right is not None:
+                return left.val == right.val and isSym(left.left, right.right) and isSym(left.right, right.left)
             else:
                 return False
-        if root == None:
+        if root is None:
             return True
         else:
             return isSym(root.left, root.right)
+                
             
 # @lc code=end
+
+# 和判断两棵二叉树相同相似. 因为这个就只有一棵树,所以要写个子函数.
+# 不要忘记判断 节点的值 要相等.
 

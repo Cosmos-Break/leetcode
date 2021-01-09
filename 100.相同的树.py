@@ -21,3 +21,5 @@ class Solution:
             return False
 # @lc code=end
 
+# 深度优先搜索->递归
+# 广度优先搜索->队列
