@@ -8,11 +8,12 @@
 class Solution:
     def removeDuplicates(self, nums: List[int]) -> int:
         i = 0
-        while i < len(nums) - 1:
-            if nums[i] == nums[i + 1]:
-                nums.pop(i + 1)
-            else:
+        for j in range(1, len(nums)):
+            if nums[j] != nums[i]:
                 i += 1
-        return len(nums)
+                nums[i] = nums[j]
+        return i + 1
 # @lc code=end
 
+# 双指针, 快慢指针,快指针遍历整个数组, 
+# 慢指针代表不重复的数组的最后一个
