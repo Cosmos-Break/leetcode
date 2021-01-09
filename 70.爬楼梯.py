@@ -1,0 +1,20 @@
+#
+# @lc app=leetcode.cn id=70 lang=python3
+#
+# [70] 爬楼梯
+#
+
+# @lc code=start
+class Solution:
+    def __init__(self):
+        self.save_dict = {1:1, 2:2}
+    def climbStairs(self, n: int) -> int:
+        if n not in self.save_dict:
+            result = self.climbStairs(n - 1) + self.climbStairs(n - 2)
+            self.save_dict[n] = result
+            return result
+        else:
+            return self.save_dict[n]
+            
+# @lc code=end
+
