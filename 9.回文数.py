@@ -7,12 +7,10 @@
 # @lc code=start
 class Solution:
     def isPalindrome(self, x: int) -> bool:
-        x_list = list(str(x))
-        x_list_reverse = reversed(x_list)
-        for i, j in zip(x_list, x_list_reverse):
-            if i != j:
-                return False
-        
-        return True
+        x = str(x)
+        if x == x[::-1]:
+            return True
+        return False
 # @lc code=end
 
+# 使用[::-1]进行翻转
