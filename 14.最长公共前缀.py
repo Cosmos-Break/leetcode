@@ -6,47 +6,30 @@
 from typing import List
 # @lc code=start
 
-# class Solution:
-#     def longestCommonPrefix(self, strs: List[str]) -> str:
-#         result = ''
-#         i = 0
-#         j = 0
-#         try:
-#             while True:
-#                 while i < len(strs) - 1:
-#                     if strs[i][j] != strs[i + 1][j]:
-#                         return result
-#                     i += 1
-#                 result += strs[i][j]
-#                 j += 1
-#                 i = 0
-#         except:
-#             return result
-#         finally:
-#             return result
-
 class Solution:
+    def lcp(self, str1, str2):
+        min_len = min(len(str1), len(str2))
+        ret_index = 0
+        while ret_index < min_len and str1[ret_index] == str2[ret_index]:
+            ret_index += 1
+        return str1[:ret_index]
+
     def longestCommonPrefix(self, strs: List[str]) -> str:
-        result = ''
-        print(*strs)
-        sz = zip(*strs)
-        for s in sz:
-            print(s)
-
-        c = [(1, 2, 3), (4, 5, 6, 7)]
-        
-        print(*c)
-        for a in zip(*c):
-            print(a)
-
-        # for a, *b in [(1, 2, 3), (4, 5, 6, 7)]:
-        #     print(a)
-        #     print(b)
+        if len(strs) == 0:
+            return ""
+        start_s = strs[0]
+        for s in strs[1:]:
+            start_s = self.lcp(start_s, s)
+            if start_s == "":
+                return ""
+        return start_s
         
 # @lc code=end
 
-if __name__ == "__main__":
-    strs = ["flower", "flow", "flight"]
-    s = Solution()
-    result = s.longestCommonPrefix(strs)
-    print(result)
+strs = ["flower", "flow", "flight"]
+s = Solution()
+result = s.longestCommonPrefix(strs)
+print(result)
+
+# 求n个str的最长公共前缀 可以转化为两两求最长公共前缀
+# 如果在求公共前缀的过程中产生了空字符串,则最后返回的一定是空字符串
