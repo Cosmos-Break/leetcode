@@ -7,14 +7,12 @@
 # @lc code=start
 class Solution:
     def plusOne(self, digits: List[int]) -> List[int]:
-        result = ''
-        for digit in digits:
-            result += str(digit)
-        result = str(int(result) + 1)
-        result_list = []
-        for digit in result:
-            result_list.append(int(digit))
-        return result_list
+        # result = ''.join([str(digit) for digit in digits])
+        # result = str(int(result) + 1)
+        # result_list = [int(digit) for digit in result]
+        # if digits[0] == 0 and len(digits) >= 2:
+        #     result_list = [0] + result_list
+        # return result_list
         
 # @lc code=end
 

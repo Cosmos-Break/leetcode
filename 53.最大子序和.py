@@ -7,15 +7,15 @@ from typing import List
 # @lc code=start
 class Solution:
     def maxSubArray(self, nums: List[int]) -> int:
-        current_sum = nums[0]
-        max_sum = nums[0]
+        premax = nums[0]
+        truemax = nums[0]
         for num in nums[1:]:
-            current_sum = max(current_sum + num, num)
-            max_sum = max(max_sum, current_sum)
-        return max_sum
-
+            premax = max(premax + num, num)
+            truemax = max(premax, truemax)
+        return truemax
 # @lc code=end
 s = Solution()
 s.maxSubArray([-2,1,-3,4,-1,2,1,-5,4])
-
+# 动态规划 先判断 只去当前值,还是取当前值+之前的值
+# 然后取一个真正的更大值
 

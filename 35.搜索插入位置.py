@@ -3,15 +3,33 @@
 #
 # [35] 搜索插入位置
 #
-
+from typing import List
 # @lc code=start
 class Solution:
     def searchInsert(self, nums: List[int], target: int) -> int:
-        for index, num in enumerate(nums):
-            if num < target:
-                continue
+        left, right = 0, len(nums)
+        while left < right:
+            mid = left + (right - left) // 2
+            if nums[mid] < target:
+                left = mid + 1
             else:
-                return index
-        return len(nums)
+                right = mid
+        return left
 # @lc code=end
+
+# class Solution:
+#     def searchInsert(self, nums: List[int], target: int) -> int:
+#         left, right = 0, len(nums)
+#         while left < right:
+#             mid = left + (right - left) // 2
+#             if nums[mid] < target:
+#                 left = mid + 1
+#             else:
+#                 right = mid
+#         return left
+
+# 二分查找模板
+s = Solution()
+print(s.searchInsert([1, 3, 5, 6], 5))
+
 
