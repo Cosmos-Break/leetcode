@@ -12,32 +12,25 @@ class ListNode:
         self.next = next
 class Solution:
     def mergeTwoLists(self, l1: ListNode, l2: ListNode) -> ListNode:
-        node_i = l1
-        node_j = l2
-        head = ListNode()
-        dummy_node = head
-        while node_i != None and node_j != None:
-            new_node = ListNode()
-            if node_i.val <= node_j.val:
-                new_node.val = node_i.val
-                node_i = node_i.next
-            else:
-                new_node.val = node_j.val
-                node_j = node_j.next
-            head.next = new_node
-            head = new_node # 注意这边不是head = new_node.next 而是应该指向整个节点
-            
-
-        if node_i != None:
-            left_node = node_i
-        elif node_j != None:
-            left_node = node_j
+        if l1 is None:
+            return l2
+        elif l2 is None:
+            return l1
+        elif l1.val < l2.val:
+            l1.next = self.mergeTwoLists(l1.next, l2)
+            return l1
         else:
-            left_node = None
-        head.next = left_node
-        return dummy_node.next
+            l2.next = self.mergeTwoLists(l1, l2.next)
+            return l2
 # @lc code=end
 
 if __name__ == "__main__":
     s = Solution()
     s.mergeTwoLists(ListNode(1), ListNode(2))
+
+# 我们可以如下递归地定义两个链表里的 merge 操作（忽略边界情况，比如空链表等）：
+
+# list1[0]+merge(list1[1:],list2)
+# list2[0]+merge(list1,list2[1:])
+
+# 也就是说，两个链表头部值较小的一个节点与剩下元素的 merge 操作结果合并。
