@@ -16,22 +16,35 @@ class Solution:
     def minDepth(self, root: TreeNode) -> int:
         if root is None:
             return 0
-        queue = []
-        queue.append((root, 1))
-        while queue:
-            node, level = queue.pop(0)
-            if node.left is None and node.right is None:
-                return level
-            if node.left is not None:
-                queue.append((node.left, level + 1))
-            if node.right is not None:
-                queue.append((node.right, level + 1))
+        if root.left is None and root.right is None:
+            return 1
+        min_dep = 10 ** 9
+        if root.left:
+            min_dep = min(self.minDepth(root.left), min_dep)
+        if root.right:
+            min_dep = min(self.minDepth(root.right), min_dep)
+        return min_dep + 1
+import collections
+# class Solution:
+#     def minDepth(self, root: TreeNode) -> int:
+#         if root is None:
+#             return 0
+#         queue = collections.deque([root])
+#         level = 1
+#         while queue:
+#             n = len(queue)
+#             for i in range(n):
+#                 node = queue.popleft()
+#                 if node.left is None and node.right is None:
+#                     return level
+#                 if node.left:
+#                     queue.append(node.left)
+#                 if node.right:
+#                     queue.append(node.right)
+#             level += 1
+#         return level
+
 # @lc code=end
-# if __name__ == "__main__":
-#     s = Solution()
-#     node1 = TreeNode(1)
-#     node2 = TreeNode(2)
-#     node3 = TreeNode(3)
-#     node1.left = node2
-#     node1.right = node3
-#     s.minDepth(node1)
+
+# 深搜
+# 宽搜

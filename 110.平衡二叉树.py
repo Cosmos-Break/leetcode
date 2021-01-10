@@ -14,17 +14,17 @@
 
 class Solution:
     def isBalanced(self, root: TreeNode) -> bool:
-        if root is None:
-            return True
-        def maxdepth(root):
+        def height(root: TreeNode):
             if root is None:
-                return 0, True
-            depth_left, isBal_left = maxdepth(root.left)
-            depth_right, isBal_right = maxdepth(root.right)
-            depth = 1 + max(depth_left, depth_right)
-            isBal = abs(depth_left - depth_right) <= 1 and isBal_left and isBal_right
-            return depth, isBal
-        _, isBal=maxdepth(root)
-        return isBal
+                return 0
+            left_height = height(root.left)
+            right_height = height(root.right)
+            if left_height == -1 or right_height == -1 or abs(left_height - right_height) > 1:
+                return - 1
+            else:
+                return 1 + max(left_height, right_height)
+        return height(root) >= 0
 # @lc code=end
-
+# 自底向上的递归 类似于后序遍历  先看左右高度
+# -1表示不平衡  如果有一个子树不平衡那么  整个肯定不平衡
+# >=0 时代表高度
