@@ -14,11 +14,11 @@
 
 class Solution:
     def maxDepth(self, root: TreeNode) -> int:
-        if root == None:
+        if root is None:
             return 0
-        elif root.left == None and root.right == None:
-            return 1
         else:
             return 1 + max(self.maxDepth(root.left), self.maxDepth(root.right))
 # @lc code=end
 
+# 如果当前节点为空,则返回0
+# 如果当前节点不为空,则返回1+ 左子树和右子树中较深的一个深度
