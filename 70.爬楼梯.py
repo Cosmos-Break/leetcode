@@ -18,7 +18,7 @@
 class Solution:
     def climbStairs(self, n: int) -> int:
         i, j, k = 0, 0, 1
-        for i in range(n):
+        for _ in range(n):
             i = j
             j = k
             k = i + j
