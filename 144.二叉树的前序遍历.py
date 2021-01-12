@@ -1,7 +1,7 @@
 #
-# @lc app=leetcode.cn id=94 lang=python3
+# @lc app=leetcode.cn id=144 lang=python3
 #
-# [94] 二叉树的中序遍历
+# [144] 二叉树的前序遍历
 #
 
 # @lc code=start
@@ -12,31 +12,28 @@
 #         self.left = left
 #         self.right = right
 # class Solution:
-#     def inorderTraversal(self, root: TreeNode) -> List[int]:
+#     def preorderTraversal(self, root: TreeNode) -> List[int]:
 #         def dfs(root, ans):
 #             if root is None:
 #                 return
-#             if root.left:
-#                 dfs(root.left, ans)
 #             ans.append(root.val)
-#             if root.right:
-#                 dfs(root.right, ans)
+#             dfs(root.left, ans)
+#             dfs(root.right, ans)
 #         ans = []
 #         dfs(root, ans)
 #         return ans
+
 class Solution:
-    def inorderTraversal(self, root: TreeNode) -> List[int]:
-        ans = []
+    def preorderTraversal(self, root: TreeNode) -> List[int]:
         stack = [root]
+        ans = []
         while stack:
             root = stack.pop()
             if isinstance(root, TreeNode):
-                stack.extend([root.right, root.val, root.left])
+                stack.extend([root.right, root.left, root.val])
             elif isinstance(root, int):
                 ans.append(root)
         return ans
-
 # @lc code=end
-
 # 递归
-# 迭代, 
+# 迭代
