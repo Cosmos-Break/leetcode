@@ -24,3 +24,4 @@ class Solution:
 
 # right = len(nums) - 1  这里要-1
 # while left <= right:  这里要加等号
+# pivot = left + (right - left) // 2  可以防止left+right溢出
