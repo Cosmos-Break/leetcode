@@ -26,4 +26,4 @@ class Solution:
         return ans[::-1]
         
 # @lc code=end
-
+# python里面的整除要用//
