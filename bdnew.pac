@@ -443,7 +443,11 @@ var autoproxy_host = {
   "i.stack.imgur.com": 1,
   "testing.googleblog.com": 1,
   "zoho.com": 1,
-  "github.com": 1
+  "github.com": 1,
+  "github.io": 1,
+  "githubusercontent.com": 1,
+  "githubassets.com": 1,
+  "git.io": 1
 };
 function FindProxyForURL(url, host) {
     var lastPos;
