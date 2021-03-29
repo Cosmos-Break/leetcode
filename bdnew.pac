@@ -442,7 +442,8 @@ var autoproxy_host = {
   "cpuc.ca.gov": 1,
   "i.stack.imgur.com": 1,
   "testing.googleblog.com": 1,
-  "zoho.com": 1
+  "zoho.com": 1,
+  "github.com": 1
 };
 function FindProxyForURL(url, host) {
     var lastPos;
@@ -453,5 +454,5 @@ function FindProxyForURL(url, host) {
         lastPos = host.indexOf('.') + 1;
         host = host.slice(lastPos);
     } while (lastPos >= 1);
-    return '\x50\x52\x4f\x58\x59 \x61\x67\x65\x6e\x74\x2e\x62\x61\x69\x64\x75\x2e\x63\x6f\x6d\x3a\x38\x31\x31\x38';
+    return 'DIRECT';
 }
