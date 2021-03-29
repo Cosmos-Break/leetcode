@@ -8,7 +8,8 @@ from collections import Counter
 class Solution:
     def frequencySort(self, nums: List[int]) -> List[int]:
         ret = []
-        for item in Counter(nums).most_common()[::-1]:
+        sorted_nums = sorted(collections.Counter(nums).items(), key = lambda x: (x[1],-x[0]))
+        for item in sorted_nums:
             num = item[0]
             count = item[1]
             ret += [num] * count
