@@ -7,10 +7,13 @@
 # @lc code=start
 class Solution:
     def intersection(self, nums1: List[int], nums2: List[int]) -> List[int]:
-        res = set()
-        for num1 in nums1:
-            if num1 in nums2:
-                res.add(num1)
-        return list(res)
+        set1 = set(nums1)
+        set2 = set(nums2)
+        return self.set_intersection(set1, set2)
+
+    def set_intersection(self, set1, set2):
+        if len(set1) > len(set2):
+            return self.set_intersection(set2, set1)
+        return [x for x in set1 if x in set2]
 # @lc code=end
 
