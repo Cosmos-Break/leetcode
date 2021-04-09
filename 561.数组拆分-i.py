@@ -7,5 +7,8 @@
 # @lc code=start
 class Solution:
     def arrayPairSum(self, nums: List[int]) -> int:
+        nums.sort()
+        return sum(nums[::2])
+
 # @lc code=end
 
