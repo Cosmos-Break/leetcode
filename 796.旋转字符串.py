@@ -5,8 +5,9 @@
 #
 
 # @lc code=start
-class Solution:
-    def rotateString(self, A: str, B: str) -> bool:
-        
+class Solution(object):
+    def rotateString(self, A, B):
+        return len(A) == len(B) and B in A+A
+
 # @lc code=end
 
