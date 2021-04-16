@@ -7,6 +7,7 @@
 # @lc code=start
 class Solution:
     def maxNumberOfBalloons(self, text: str) -> int:
-        
+        return min(text.count(key)//num for key,num in collections.Counter('balloon').items()) 
+
 # @lc code=end
 
