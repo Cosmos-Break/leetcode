@@ -14,6 +14,14 @@
 
 class Solution:
     def isUnivalTree(self, root: TreeNode) -> bool:
-        
+        self.ret = True
+        def dfs(node):
+            if node and self.ret == True:
+                if node.val != root.val:
+                    self.ret =  False
+                dfs(node.left)
+                dfs(node.right)
+        dfs(root)
+        return self.ret
 # @lc code=end
 
