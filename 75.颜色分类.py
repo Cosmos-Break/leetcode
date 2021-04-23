@@ -12,17 +12,14 @@ class Solution:
         """
         n = len(nums)
         pointer_0 = 0
-        pointer_2 = n - 1
-        i = 0
-        while i <= pointer_2:
-            if nums[i] == 2:
-                nums[i], nums[pointer_2] = nums[pointer_2], nums[i]
-                pointer_2 -= 1
-            elif nums[i] == 0:
+        for i in range(n):
+            if nums[i] == 0:
                 nums[i], nums[pointer_0] = nums[pointer_0], nums[i]
                 pointer_0 += 1
-                i += 1
-            else:
-                i += 1
+        for i in range(n):
+            if nums[i] == 1:
+                nums[i], nums[pointer_0] = nums[pointer_0], nums[i]
+                pointer_0 += 1
+        
             
 # @lc code=end
