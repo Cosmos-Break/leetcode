@@ -6,28 +6,17 @@
 
 # @lc code=start
 class Solution:
-    # TLE:
-    # def maxArea(self, height: List[int]) -> int:
-    #     max_area = 0
-    #     n = len(height)
-    #     for i in range(n):
-    #         for j in range(i, n):
-    #             area = (j - i) * min(height[i], height[j])
-    #             max_area = max(max_area, area)
-    #     return max_area
-
     def maxArea(self, height: List[int]) -> int:
-        max_area = 0
-        n = len(height)
-        i, j = 0, n - 1
-        while i < j:
-            if height[i] < height[j]:
-                max_area = max(max_area, height[i] * (j - i))
-                i += 1
+        l, r = 0, len(height) - 1
+        ans = 0
+        while l < r:
+            area = min(height[l], height[r]) * (r - l)
+            ans = max(ans, area)
+            if height[l] <= height[r]:
+                l += 1
             else:
-                max_area = max(max_area, height[j] * (j - i))
-                j -= 1
-        return max_area
+                r -= 1
+        return ans
 
 # @lc code=end
 
