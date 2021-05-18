@@ -5,19 +5,30 @@
 #
 
 # @lc code=start
+from typing import List
+
+
 class Solution:
+
     def combinationSum2(self, candidates: List[int], target: int) -> List[List[int]]:
-        result_list = []
-        result = []
-        def generate(candidates, target, result):
-            if target < 0:
+        def dfs(begin, path, residue):
+            if residue == 0:
+                res.append(path[:])
                 return
-            if target == 0:
-                result_list.append(result)
-                return
-            for i in range(len(candidates)):
-                generate(candidates[i + 1:], target - candidates[i], result+[candidates[i]])
-        generate(candidates, target, result)
-        return result_list
+            for index in range(begin, size):
+                if candidates[index] > residue:
+                    break
+                if index > begin and candidates[index - 1] == candidates[index]:
+                    continue
+                path.append(candidates[index])
+                dfs(index + 1, path, residue - candidates[index])
+                path.pop()
+        size = len(candidates)
+        if size == 0:
+            return []
+        candidates.sort()
+        res = []
+        dfs(0, [], target)
+        return res
 # @lc code=end
 
